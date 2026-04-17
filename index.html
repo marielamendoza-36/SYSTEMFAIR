@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>San Ysidro STEM Fair 2026 – Interactive Map</title>
+  <title>San Ysidro STEM Fair</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -18,9 +18,9 @@
       --border: #c8dbc8;
       --shadow: 0 4px 24px rgba(26,122,60,0.13);
     }
-
+ 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -30,7 +30,7 @@
       flex-direction: column;
       overflow: hidden;
     }
-
+ 
     /* ── HEADER ── */
     header {
       background: var(--green);
@@ -44,13 +44,13 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.18);
       z-index: 10;
     }
-
+ 
     .header-title {
       display: flex;
       align-items: baseline;
       gap: 10px;
     }
-
+ 
     .header-title h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.7rem;
@@ -58,7 +58,7 @@
       color: var(--yellow);
       line-height: 1;
     }
-
+ 
     .header-title span {
       font-size: 0.8rem;
       font-weight: 500;
@@ -66,7 +66,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-
+ 
     .header-badge {
       background: var(--yellow);
       color: var(--green);
@@ -76,7 +76,7 @@
       padding: 4px 12px;
       border-radius: 20px;
     }
-
+ 
     /* ── TOOLBAR ── */
     .toolbar {
       background: var(--surface);
@@ -88,7 +88,7 @@
       flex-shrink: 0;
       flex-wrap: wrap;
     }
-
+ 
     .btn {
       display: inline-flex;
       align-items: center;
@@ -105,27 +105,27 @@
       transition: background 0.15s, border-color 0.15s, transform 0.1s;
       user-select: none;
     }
-
+ 
     .btn:hover {
       background: #e8f5ed;
       border-color: var(--green);
       color: var(--green);
     }
-
+ 
     .btn:active { transform: scale(0.96); }
-
+ 
     .btn.primary {
       background: var(--green);
       color: #fff;
       border-color: var(--green);
     }
-
+ 
     .btn.primary:hover {
       background: #145c2d;
       border-color: #145c2d;
       color: #fff;
     }
-
+ 
     .zoom-display {
       font-size: 0.82rem;
       font-weight: 600;
@@ -137,21 +137,21 @@
       border-radius: 8px;
       padding: 7px 10px;
     }
-
+ 
     .toolbar-sep {
       width: 1px;
       height: 28px;
       background: var(--border);
       flex-shrink: 0;
     }
-
+ 
     .hint {
       font-size: 0.76rem;
       color: #6b886b;
       margin-left: auto;
       font-style: italic;
     }
-
+ 
     /* ── MAP CONTAINER ── */
     .map-wrapper {
       flex: 1;
@@ -163,9 +163,9 @@
         radial-gradient(circle at 80% 70%, rgba(21,101,192,0.05) 0%, transparent 60%),
         var(--bg);
     }
-
+ 
     .map-wrapper.grabbing { cursor: grabbing; }
-
+ 
     .map-canvas {
       position: absolute;
       top: 0; left: 0;
@@ -173,7 +173,7 @@
       will-change: transform;
       transition: transform 0.04s linear;
     }
-
+ 
     .map-canvas img {
       display: block;
       max-width: none;
@@ -182,7 +182,7 @@
       border-radius: 4px;
       box-shadow: var(--shadow);
     }
-
+ 
     /* ── MINI-MAP ── */
     .minimap {
       position: absolute;
@@ -197,7 +197,7 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.12);
       z-index: 5;
     }
-
+ 
     .minimap img {
       width: 100%;
       height: 100%;
@@ -205,7 +205,7 @@
       pointer-events: none;
       display: block;
     }
-
+ 
     .minimap-viewport {
       position: absolute;
       border: 2px solid var(--magenta);
@@ -213,7 +213,7 @@
       border-radius: 3px;
       pointer-events: none;
     }
-
+ 
     .minimap-label {
       position: absolute;
       top: 4px; left: 6px;
@@ -226,14 +226,14 @@
       padding: 1px 4px;
       border-radius: 3px;
     }
-
+ 
     /* ── ZOOM SLIDER ── */
     .zoom-slider-wrap {
       display: flex;
       align-items: center;
       gap: 6px;
     }
-
+ 
     input[type=range] {
       -webkit-appearance: none;
       width: 90px;
@@ -243,7 +243,7 @@
       outline: none;
       cursor: pointer;
     }
-
+ 
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 16px; height: 16px;
@@ -252,7 +252,7 @@
       border: 2px solid #fff;
       box-shadow: 0 1px 4px rgba(0,0,0,0.2);
     }
-
+ 
     /* ── TOAST ── */
     .toast {
       position: fixed;
@@ -270,12 +270,12 @@
       transition: opacity 0.3s, transform 0.3s;
       z-index: 100;
     }
-
+ 
     .toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
-
+ 
     /* ── FULLSCREEN OVERLAY HINT ── */
     @media (max-width: 600px) {
       .hint { display: none; }
@@ -285,61 +285,60 @@
   </style>
 </head>
 <body>
-
+ 
 <header>
   <div class="header-title">
-    <h1>San Ysidro STEM Fair 2026</h1>
-    <span>Interactive Map</span>
+    <h1>San Ysidro STEM Fair</h1>
   </div>
   <div class="header-badge">April 17 · Smythe Elementary</div>
 </header>
-
+ 
 <div class="toolbar">
   <button class="btn" id="zoomOut" title="Zoom Out">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
     Zoom Out
   </button>
-
+ 
   <div class="zoom-slider-wrap">
     <input type="range" id="zoomSlider" min="0.3" max="5" step="0.05" value="1" />
   </div>
-
+ 
   <button class="btn" id="zoomIn" title="Zoom In">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>
     Zoom In
   </button>
-
+ 
   <span class="zoom-display" id="zoomLevel">100%</span>
-
+ 
   <div class="toolbar-sep"></div>
-
+ 
   <button class="btn primary" id="resetBtn">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.65"/></svg>
     Reset View
   </button>
-
+ 
   <button class="btn" id="fitBtn">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
     Fit to Screen
   </button>
-
+ 
   <span class="hint">🖱 Scroll to zoom · Click &amp; drag to pan · Pinch on mobile</span>
 </div>
-
+ 
 <div class="map-wrapper" id="mapWrapper">
   <div class="map-canvas" id="mapCanvas">
     <img id="mapImg" src="SY_STEM_FAIR_2026_map.png" alt="San Ysidro STEM Fair 2026 Layout Map" draggable="false" />
   </div>
-
+ 
   <div class="minimap" id="minimap">
     <img src="SY_STEM_FAIR_2026_map.png" alt="Mini map" />
     <div class="minimap-viewport" id="minimapViewport"></div>
     <div class="minimap-label">Overview</div>
   </div>
 </div>
-
+ 
 <div class="toast" id="toast"></div>
-
+ 
 <script>
   const wrapper   = document.getElementById('mapWrapper');
   const canvas    = document.getElementById('mapCanvas');
@@ -349,17 +348,17 @@
   const minimap   = document.getElementById('minimap');
   const mmVP      = document.getElementById('minimapViewport');
   const toast     = document.getElementById('toast');
-
+ 
   let scale = 1;
   let originX = 0, originY = 0;
   let isDragging = false;
   let startX, startY, startOriginX, startOriginY;
   let toastTimer;
-
+ 
   const MIN_SCALE = 0.2;
   const MAX_SCALE = 6;
   const ZOOM_STEP = 0.2;
-
+ 
   // ── Apply transform ──────────────────────────────────────────
   function applyTransform(animate = false) {
     if (animate) {
@@ -373,12 +372,12 @@
     updateSliderFill();
     updateMinimap();
   }
-
+ 
   function updateSliderFill() {
     const pct = ((scale - parseFloat(slider.min)) / (parseFloat(slider.max) - parseFloat(slider.min))) * 100;
     slider.style.background = `linear-gradient(to right, var(--green) ${pct}%, var(--border) ${pct}%)`;
   }
-
+ 
   // ── Clamp pan to keep map somewhat visible ───────────────────
   function clampOrigin() {
     const iw = img.naturalWidth * scale;
@@ -389,7 +388,7 @@
     originX = Math.min(ww - pad, Math.max(pad - iw, originX));
     originY = Math.min(wh - pad, Math.max(pad - ih, originY));
   }
-
+ 
   // ── Minimap viewport ─────────────────────────────────────────
   function updateMinimap() {
     if (!img.naturalWidth) return;
@@ -397,7 +396,7 @@
     const mmH = minimap.clientHeight;
     const imgRatio = img.naturalWidth / img.naturalHeight;
     const mmRatio  = mmW / mmH;
-
+ 
     let renderedW, renderedH, offsetX = 0, offsetY = 0;
     if (imgRatio > mmRatio) {
       renderedW = mmW;
@@ -408,24 +407,24 @@
       renderedW = mmH * imgRatio;
       offsetX = (mmW - renderedW) / 2;
     }
-
+ 
     const scaleX = renderedW / img.naturalWidth;
     const scaleY = renderedH / img.naturalHeight;
-
+ 
     const ww = wrapper.clientWidth;
     const wh = wrapper.clientHeight;
-
+ 
     const vpX = (-originX / scale) * scaleX + offsetX;
     const vpY = (-originY / scale) * scaleY + offsetY;
     const vpW = (ww / scale) * scaleX;
     const vpH = (wh / scale) * scaleY;
-
+ 
     mmVP.style.left   = Math.max(offsetX, Math.min(offsetX + renderedW - 4, vpX)) + 'px';
     mmVP.style.top    = Math.max(offsetY, Math.min(offsetY + renderedH - 4, vpY)) + 'px';
     mmVP.style.width  = Math.min(vpW, renderedW) + 'px';
     mmVP.style.height = Math.min(vpH, renderedH) + 'px';
   }
-
+ 
   // ── Fit to screen ────────────────────────────────────────────
   function fitToScreen() {
     if (!img.naturalWidth) return;
@@ -441,14 +440,14 @@
     originY = (wrapper.clientHeight - scaledH) / 2;
     applyTransform(true);
   }
-
+ 
   function resetView() {
     scale = 1;
     originX = (wrapper.clientWidth  - img.naturalWidth)  / 2;
     originY = (wrapper.clientHeight - img.naturalHeight) / 2;
     applyTransform(true);
   }
-
+ 
   // ── Zoom at point ────────────────────────────────────────────
   function zoomAt(newScale, clientX, clientY) {
     newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, newScale));
@@ -461,14 +460,14 @@
     clampOrigin();
     applyTransform();
   }
-
+ 
   // ── Mouse wheel zoom ─────────────────────────────────────────
   wrapper.addEventListener('wheel', e => {
     e.preventDefault();
     const factor = e.deltaY < 0 ? 1 + ZOOM_STEP : 1 - ZOOM_STEP;
     zoomAt(scale * factor, e.clientX, e.clientY);
   }, { passive: false });
-
+ 
   // ── Mouse drag pan ───────────────────────────────────────────
   wrapper.addEventListener('mousedown', e => {
     if (e.button !== 0) return;
@@ -479,7 +478,7 @@
     startOriginY = originY;
     wrapper.classList.add('grabbing');
   });
-
+ 
   window.addEventListener('mousemove', e => {
     if (!isDragging) return;
     originX = startOriginX + (e.clientX - startX);
@@ -487,17 +486,17 @@
     clampOrigin();
     applyTransform();
   });
-
+ 
   window.addEventListener('mouseup', () => {
     isDragging = false;
     wrapper.classList.remove('grabbing');
   });
-
+ 
   // ── Touch support ────────────────────────────────────────────
   let lastTouchDist = null;
   let touchStartOriginX, touchStartOriginY, touchStartX, touchStartY;
   let touchStartScale;
-
+ 
   wrapper.addEventListener('touchstart', e => {
     if (e.touches.length === 1) {
       isDragging = true;
@@ -519,7 +518,7 @@
     }
     e.preventDefault();
   }, { passive: false });
-
+ 
   wrapper.addEventListener('touchmove', e => {
     e.preventDefault();
     if (e.touches.length === 1 && isDragging) {
@@ -545,31 +544,31 @@
       applyTransform();
     }
   }, { passive: false });
-
+ 
   wrapper.addEventListener('touchend', () => {
     isDragging = false;
     lastTouchDist = null;
   });
-
+ 
   // ── Buttons ──────────────────────────────────────────────────
   document.getElementById('zoomIn').addEventListener('click', () => {
     const cx = wrapper.clientWidth / 2, cy = wrapper.clientHeight / 2;
     zoomAt(scale * (1 + ZOOM_STEP), cx, cy);
   });
-
+ 
   document.getElementById('zoomOut').addEventListener('click', () => {
     const cx = wrapper.clientWidth / 2, cy = wrapper.clientHeight / 2;
     zoomAt(scale * (1 - ZOOM_STEP), cx, cy);
   });
-
+ 
   document.getElementById('resetBtn').addEventListener('click', resetView);
   document.getElementById('fitBtn').addEventListener('click', fitToScreen);
-
+ 
   slider.addEventListener('input', () => {
     const cx = wrapper.clientWidth / 2, cy = wrapper.clientHeight / 2;
     zoomAt(parseFloat(slider.value), cx, cy);
   });
-
+ 
   // ── Keyboard shortcuts ───────────────────────────────────────
   document.addEventListener('keydown', e => {
     if (e.key === '+' || e.key === '=') {
@@ -587,7 +586,7 @@
       else if (e.key === 'ArrowUp')    { originY += 40; clampOrigin(); applyTransform(); }
       else if (e.key === 'ArrowDown')  { originY -= 40; clampOrigin(); applyTransform(); }
   });
-
+ 
   // ── Toast helper ─────────────────────────────────────────────
   function showToast(msg) {
     clearTimeout(toastTimer);
@@ -595,13 +594,13 @@
     toast.classList.add('show');
     toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
   }
-
+ 
   // ── Init ─────────────────────────────────────────────────────
   img.addEventListener('load', () => {
     fitToScreen();
     setTimeout(() => showToast('Tip: scroll to zoom · drag to pan · pinch on mobile'), 600);
   });
-
+ 
   img.addEventListener('error', () => {
     canvas.innerHTML = `
       <div style="padding:40px; text-align:center; font-family:'DM Sans',sans-serif; color:#555; max-width:420px; background:#fff; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1);">
@@ -615,7 +614,7 @@
     canvas.style.top = '50%';
     canvas.style.transform = 'translate(-50%, -50%)';
   });
-
+ 
   window.addEventListener('resize', fitToScreen);
 </script>
 </body>
